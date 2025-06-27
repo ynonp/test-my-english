@@ -237,21 +237,21 @@ export default function Home() {
 
   if (currentScreen === 'hero') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-white flex items-center justify-center p-4">
         <div className="text-center max-w-2xl">
           <div className="mb-8 p-8 bg-white rounded-2xl shadow-lg">
-            <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+            <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-[#007BFF] to-[#0056b3] rounded-full flex items-center justify-center">
               <Volume2 className="w-16 h-16 text-white" />
             </div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-4">
-              Assess My English Level
+            <h1 className="text-4xl font-heading text-[#212529] mb-4">
+              Uptick English Level Assessment
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg font-body text-[#212529] mb-8">
               Have a natural conversation with our AI teacher to discover your English proficiency level
             </p>
             <button
               onClick={startConversation}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl text-xl font-semibold transition-colors shadow-lg"
+              className="bg-[#007BFF] hover:bg-[#0056b3] text-white px-8 py-4 rounded-md text-xl font-semibold transition-colors shadow-lg"
             >
               Start Assessment
             </button>
@@ -263,7 +263,7 @@ export default function Home() {
 
   if (currentScreen === 'conversation') {
     return (
-      <div className="min-h-screen bg-gray-50 p-4 relative">
+      <div className="min-h-screen bg-[#F8F9FA] p-4 relative">
         {isFinishingConversation && (
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-8 max-w-md mx-4 text-center shadow-xl">
@@ -282,9 +282,9 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-800">English Assessment Conversation</h2>
+              <h2 className="text-2xl font-heading text-[#212529]">English Assessment Conversation</h2>
               <div className="flex items-center space-x-4">
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-[#212529]">
                   Time: {timeElapsed}/8 minutes
                 </div>
                 <label className="flex items-center space-x-2">
@@ -294,7 +294,7 @@ export default function Home() {
                     onChange={(e) => setFastMode(e.target.checked)}
                     className="rounded"
                   />
-                  <span className="text-sm text-gray-600">Fast mode</span>
+                  <span className="text-sm text-[#212529]">Fast mode</span>
                 </label>
                 <label className="flex items-center space-x-2">
                   <input
@@ -303,7 +303,7 @@ export default function Home() {
                     onChange={(e) => setShowTranscription(e.target.checked)}
                     className="rounded"
                   />
-                  <span className="text-sm text-gray-600">Show text</span>
+                  <span className="text-sm text-[#212529]">Show text</span>
                 </label>
               </div>
             </div>
@@ -313,8 +313,8 @@ export default function Home() {
                 <div key={idx} className={`flex ${msg.speaker === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                     msg.speaker === 'user' 
-                      ? 'bg-blue-600 text-white ml-4' 
-                      : 'bg-gray-200 text-gray-800 mr-4'
+                      ? 'bg-[#007BFF] text-white ml-4' 
+                      : 'bg-gray-200 text-[#212529] mr-4'
                   }`}>
                     {showTranscription && (
                       <div className="text-xs opacity-75 mb-1">
@@ -330,12 +330,12 @@ export default function Home() {
             
             <div className="text-center">
               {isSpeaking && (
-                <div className="mb-4 text-sm text-gray-600 animate-pulse">
+                <div className="mb-4 text-sm text-[#212529] animate-pulse">
                   🎙️ Teacher is speaking...
                 </div>
               )}
               {isGeneratingResponse && (
-                <div className="mb-4 text-sm text-gray-600 animate-pulse">
+                <div className="mb-4 text-sm text-[#212529] animate-pulse">
                   🤔 Teacher is thinking...
                 </div>
               )}
@@ -343,12 +343,12 @@ export default function Home() {
                 <button
                   onClick={startRecording}
                   disabled={isRecording || isSpeaking || isGeneratingResponse}
-                  className={`inline-flex items-center space-x-2 px-6 py-3 rounded-full text-white font-semibold transition-all ${
+                  className={`inline-flex items-center space-x-2 px-6 py-3 rounded-md text-white font-semibold transition-all ${
                     isRecording 
                       ? 'bg-red-500 animate-pulse' 
                       : (isSpeaking || isGeneratingResponse)
                       ? 'bg-gray-400 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700'
+                      : 'bg-[#007BFF] hover:bg-[#0056b3]'
                   }`}
                 >
                   <Mic className="w-5 h-5" />
@@ -359,7 +359,7 @@ export default function Home() {
                 
                 <button
                   onClick={handleEndConversation}
-                  className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg font-medium transition-colors"
+                  className="px-4 py-2 bg-gray-500 hover:bg-gray-600 text-white rounded-md font-medium transition-colors"
                 >
                   Finish Conversation
                 </button>
@@ -374,29 +374,29 @@ export default function Home() {
   if (currentScreen === 'assessment') {
     if (!assessmentData) {
       return (
-        <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4 flex items-center justify-center">
+        <div className="min-h-screen bg-white p-4 flex items-center justify-center">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Analyzing your English level...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#007BFF] mx-auto mb-4"></div>
+            <p className="text-[#212529]">Analyzing your English level...</p>
           </div>
         </div>
       )
     }
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
+      <div className="min-h-screen bg-white p-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+            <h2 className="text-3xl font-heading text-center text-[#212529] mb-4">
               Your English Level Assessment
             </h2>
             
             {assessmentData.overall && (
-              <div className="text-center mb-8 p-4 bg-blue-50 rounded-lg">
-                <h3 className="text-xl font-semibold text-blue-800 mb-2">
+              <div className="text-center mb-8 p-4 bg-[#F8F9FA] rounded-lg">
+                <h3 className="text-xl font-heading text-[#007BFF] mb-2">
                   Overall Level: {assessmentData.overall.level}
                 </h3>
-                <p className="text-gray-700">{assessmentData.overall.summary}</p>
+                <p className="text-[#212529]">{assessmentData.overall.summary}</p>
               </div>
             )}
             
@@ -406,20 +406,20 @@ export default function Home() {
                 if (!data) return null
                 
                 return (
-                  <div key={category} className="text-center p-6 bg-gray-50 rounded-lg">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3 capitalize">
+                  <div key={category} className="text-center p-6 bg-[#F8F9FA] rounded-lg">
+                    <h3 className="text-xl font-heading text-[#212529] mb-3 capitalize">
                       {category}
                     </h3>
-                    <div className="text-4xl font-bold text-blue-600 mb-3">
+                    <div className="text-4xl font-bold text-[#007BFF] mb-3">
                       {data.score}/100
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
                       <div 
-                        className="bg-blue-600 h-3 rounded-full transition-all duration-500"
+                        className="bg-[#007BFF] h-3 rounded-full transition-all duration-500"
                         style={{ width: `${data.score}%` }}
                       ></div>
                     </div>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-[#212529]">
                       {data.feedback}
                     </p>
                   </div>
@@ -442,7 +442,7 @@ export default function Home() {
                   setIsFinishingConversation(false)
                   // Keep fastMode setting for user preference
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors"
+                className="bg-[#007BFF] hover:bg-[#0056b3] text-white px-8 py-3 rounded-md font-semibold transition-colors"
               >
                 Take Assessment Again
               </button>
