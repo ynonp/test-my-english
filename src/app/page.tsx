@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { Mic, Volume2 } from 'lucide-react'
+const categories = ['vocabulary', 'grammar', 'fluency'] as const;
 
 export default function Home() {
   const [currentScreen, setCurrentScreen] = useState<'hero' | 'conversation' | 'assessment'>('hero')
@@ -400,7 +401,7 @@ export default function Home() {
             )}
             
             <div className="grid md:grid-cols-3 gap-6">
-              {['vocabulary', 'grammar', 'fluency'].map((category) => {
+              {categories.map((category) => {
                 const data = assessmentData[category]
                 if (!data) return null
                 

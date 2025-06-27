@@ -93,7 +93,9 @@ export async function POST(request: NextRequest) {
         // Limit cache size
         if (audioCache.size > 50) {
           const firstKey = audioCache.keys().next().value
-          audioCache.delete(firstKey)
+          if (firstKey) {
+            audioCache.delete(firstKey)
+          }          
         }
       }
       
